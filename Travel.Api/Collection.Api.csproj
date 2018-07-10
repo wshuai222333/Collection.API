@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <MvcRazorCompileOnPublish>false</MvcRazorCompileOnPublish>
     <DebugType>portable</DebugType>
     <OutputType>Exe</OutputType>
     <RuntimeIdentifiers>win10-x64;win7-x64;win7-x86;centos.7-x64</RuntimeIdentifiers>
@@ -12,6 +13,10 @@
     <Content Remove="Areas\**" />
     <EmbeddedResource Remove="Areas\**" />
     <None Remove="Areas\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\PayBack\PayBack.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,6 +33,10 @@
 
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\PayBack\PayBack.cshtml" />
   </ItemGroup>
 
   <ItemGroup>

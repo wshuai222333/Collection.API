@@ -50,8 +50,6 @@ namespace Collection.Api {
             builder.RegisterType<ResponseMessageModel>()
                 .AsSelf()
                 .PropertiesAutowired();
-
-       
         }
     }
 }
