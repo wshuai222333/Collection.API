@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\PayBack\PayBack.cshtml" />
+    <None Include="Views\PayBack\PayBack.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -34,11 +34,6 @@
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.4" />
   </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Views\PayBack\PayBack.cshtml" />
-  </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\Travel.Api.Controllers\Collection.Api.Controllers.csproj" />
     <ProjectReference Include="..\Travel.Api.DTO\Collection.Api.DTO.csproj" />

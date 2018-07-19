@@ -1,11 +1,7 @@
 ﻿using Collection.Entity.CollectionModel;
 using PetaPoco.NetCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Collection.PetaPoco.Repositories.Collection
-{
+namespace Collection.PetaPoco.Repositories.Collection {
     public class UserAccountRep
     {
         public object Insert(UserAccount model) {
@@ -14,6 +10,13 @@ namespace Collection.PetaPoco.Repositories.Collection
 
         public int Update(UserAccount model) {
             return CollectionDB.GetInstance().Update(model);
+        }
+
+        public int UpdateMemberlevel(int UserAccountId,int Memberlevel) {
+            string wherestr = string.Empty;
+            wherestr = " AND UserAccountId=" + UserAccountId;
+            string sql = string.Format("SET Memberlevel={0} WHERE 1=1 {1}", Memberlevel, wherestr);
+            return CollectionDB.GetInstance().Update<UserAccount>(sql);
         }
         public UserAccount GetUserAccount(UserAccount model) {
             #region sql

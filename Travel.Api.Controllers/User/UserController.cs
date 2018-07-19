@@ -31,6 +31,8 @@ namespace Collection.Api.Controllers.User {
         public ModifyProblemService modifyProblemService { get; set; }
 
         public DeleteProblemService deleteProblemService { get; set; }
+
+        public ModifyMemberlevelService modifyMemberlevelService { get; set; }
         #endregion
         /// <summary>
         /// 注册
@@ -87,6 +89,10 @@ namespace Collection.Api.Controllers.User {
         [Route("DeleteProblem"), HttpPost]
         public async Task<ResponseMessageModel> DeleteProblem([FromBody]RequestDeleteProblem model) {
             return await Task.Run(() => deleteProblemService.Execute(model));
+        }
+        [Route("ModifyMemberlevel"), HttpPost]
+        public async Task<ResponseMessageModel> ModifyMemberlevel([FromBody]RequestModifyMemberlevel model) {
+            return await Task.Run(() => modifyMemberlevelService.Execute(model));
         }
     }
 }
