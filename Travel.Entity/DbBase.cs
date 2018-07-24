@@ -7,7 +7,7 @@ namespace Collection.Entity {
     /// 数据库连接
     /// </summary>
     public class DbBase {
-        #region 收款
+        #region
         protected readonly CollectionContext collectionContext;
         public readonly IExtensionRepository<UserAccount> userAccount;
 
@@ -18,12 +18,9 @@ namespace Collection.Entity {
         /// 构造方法
         /// </summary>
         public DbBase() {
-            #region 收款
+            #region
             var collectionContext = new CollectionContext();
-
             userAccount = new CollectionEfRepository<UserAccount>(collectionContext);
-
-
             #endregion
         }
     }

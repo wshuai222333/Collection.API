@@ -194,6 +194,23 @@ namespace Collection.Entity.CollectionModel
 		
 	 }
 	
+	 [TableName("dbo.BankCard")]
+	 [PrimaryKey("BankCardId")]
+	 [ExplicitColumns]
+     public partial class BankCard:CollectionDB.Record<BankCard>
+	 {
+		
+		[Column] public int BankCardId {get;set;}
+		[Column] public string CardId {get;set;}
+		[Column] public string BankName {get;set;}
+		[Column] public string BankCode {get;set;}
+		[Column] public string Phone {get;set;}
+		[Column] public string AcctName {get;set;}
+		[Column] public int? Type {get;set;}
+		[Column] public int? UserAccountId {get;set;}
+		
+	 }
+	
 	 [TableName("dbo.UserAccount")]
 	 [PrimaryKey("UserAccountId")]
 	 [ExplicitColumns]
