@@ -1,6 +1,7 @@
 ﻿using Collection.Api.DTO.Trade;
 using Collection.Entity.CollectionModel;
 using Collection.PetaPoco.Repositories.Collection;
+using System;
 
 namespace Collection.Api.Service.Trade {
     public class AddBankCardService : ApiOriBase<RequestAddBankCard> {
@@ -11,6 +12,7 @@ namespace Collection.Api.Service.Trade {
         /// 执行方法
         /// </summary>
         protected override void ExecuteMethod() {
+            
             var bankCard = new BankCard() {
                 AcctName = this.Parameter.AcctName,
                 BankCode = this.Parameter.BankCode,
@@ -18,9 +20,14 @@ namespace Collection.Api.Service.Trade {
                 CardId = this.Parameter.CardId,
                 Phone = this.Parameter.Phone,
                 Type = this.Parameter.Type,
-                UserAccountId = this.Parameter.UserAccountId
+                UserAccountId = this.Parameter.UserAccountId,
+                CreateTime = DateTime.Now
             };
+            if (bankCardRep.GetBankCard(bankCard)!=null) {
+                throw new AggregateException("卡号已存在，请检查卡号！");
+            } 
             this.Result.Data = bankCardRep.Insert(bankCard);
+
         }
     }
 }

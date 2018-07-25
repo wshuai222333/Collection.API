@@ -177,6 +177,7 @@ namespace Collection.Entity.CollectionModel
 		[Column] public int AdviceId {get;set;}
 		[Column] public int? UserAccountId {get;set;}
 		[Column] public string AdviceContent {get;set;}
+		[Column] public DateTime? CreateTime {get;set;}
 		
 	 }
 	
@@ -208,6 +209,7 @@ namespace Collection.Entity.CollectionModel
 		[Column] public string AcctName {get;set;}
 		[Column] public int? Type {get;set;}
 		[Column] public int? UserAccountId {get;set;}
+		[Column] public DateTime? CreateTime {get;set;}
 		
 	 }
 	

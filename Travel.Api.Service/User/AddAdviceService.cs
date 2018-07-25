@@ -1,6 +1,7 @@
 ﻿using Collection.Api.DTO.User;
 using Collection.Entity.CollectionModel;
 using Collection.PetaPoco.Repositories.Collection;
+using System;
 
 namespace Collection.Api.Service.User {
     public class AddAdviceService : ApiOriBase<RequestAddAdvice> {
@@ -13,7 +14,8 @@ namespace Collection.Api.Service.User {
         protected override void ExecuteMethod() {
             this.Result.Data = adviceRep.Insert(new Advice() {
                 AdviceContent = this.Parameter.AdviceContent,
-                UserAccountId = this.Parameter.UserAccountId
+                UserAccountId = this.Parameter.UserAccountId,
+                 CreateTime = DateTime.Now
             });
         }
     }
