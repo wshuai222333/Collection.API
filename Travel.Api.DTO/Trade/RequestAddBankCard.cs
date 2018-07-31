@@ -18,5 +18,7 @@ namespace Collection.Api.DTO.Trade
         public string AcctName { get; set; }
 
         public int Type { get; set; }
+
+        public string AcctIdCard { get; set; }
     }
 }

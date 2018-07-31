@@ -33,6 +33,7 @@ namespace Collection.Entity.CollectionModel
 		private static string GetConn()
         {
             return JsonConfig.JsonRead("collectioConnection");
+            //return "Data Source=210.51.165.107;Initial Catalog=Collection;MultipleActiveResultSets=True;user id=tladmin;password=fxtx2011@))(;";
         }
 
         private static SqlConnection OpenConnection(string name)
@@ -210,6 +211,7 @@ namespace Collection.Entity.CollectionModel
 		[Column] public int? Type {get;set;}
 		[Column] public int? UserAccountId {get;set;}
 		[Column] public DateTime? CreateTime {get;set;}
+		[Column] public string AcctIdCard {get;set;}
 		
 	 }
 	
@@ -226,6 +228,7 @@ namespace Collection.Entity.CollectionModel
 		[Column] public DateTime? ModifyTime {get;set;}
 		[Column] public int? Memberlevel {get;set;}
 		[Column] public string Phone {get;set;}
+		[Column] public int? Integral {get;set;}
 		
 	 }
 	

@@ -29,7 +29,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Collection.Repositories.EF"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Collection.PetaPoco.Repositories", "Collection.PetaPoco.Repositories\Collection.PetaPoco.Repositories.csproj", "{73CFEAC0-AF84-4F53-83D3-45618F20EDCF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Collection.Installment.Service", "CollectiongInstallmentService\Collection.Installment.Service.csproj", "{7EFCB2E8-346C-4FF8-A545-126318637CD6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Collection.Installment.Service", "CollectiongInstallmentService\Collection.Installment.Service.csproj", "{7EFCB2E8-346C-4FF8-A545-126318637CD6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "UnitTestProject1\UnitTestProject1.csproj", "{68D5F799-AB67-4190-B36C-7E4E5C56D500}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,6 +75,10 @@ Global
 		{7EFCB2E8-346C-4FF8-A545-126318637CD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7EFCB2E8-346C-4FF8-A545-126318637CD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7EFCB2E8-346C-4FF8-A545-126318637CD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68D5F799-AB67-4190-B36C-7E4E5C56D500}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68D5F799-AB67-4190-B36C-7E4E5C56D500}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68D5F799-AB67-4190-B36C-7E4E5C56D500}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68D5F799-AB67-4190-B36C-7E4E5C56D500}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

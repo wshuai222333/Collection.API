@@ -27,6 +27,9 @@ namespace Collection.PetaPoco.Repositories.Collection {
             if (!string.IsNullOrEmpty(model.UserPwd)) {
                 wherestr += " AND UserPwd = @1";
             }
+            if (model.UserAccountId >0) {
+                wherestr += " AND UserAccountId  = @2";
+            }
             string sql = string.Format(@"
             SELECT  *
             FROM    dbo.UserAccount
@@ -35,7 +38,7 @@ namespace Collection.PetaPoco.Repositories.Collection {
             ", wherestr);
             #endregion
             return CollectionDB.GetInstance().SingleOrDefault<UserAccount>(sql,
-                              model.UserName, model.UserPwd);
+                              model.UserName, model.UserPwd,model.UserAccountId);
         }
         public Page<UserAccount> GetUserList(int pageindex, int pagesize,string UserName,string Phone) {
             string sql = string.Empty;
@@ -53,6 +56,17 @@ FROM    dbo.UserAccount
 WHERE 1=1 {0}
 ORDER BY CreateTime DESC", wherestr);
             return CollectionDB.GetInstance().Page<UserAccount>(pageindex, pagesize, sql, UserName, Phone);
+        }
+
+        public int AddIntegral(int UserAccountId,int Integral,int? Memberlevel) {
+            string wherestr = string.Empty;
+            wherestr += " AND UserAccountId=" + UserAccountId;
+            string setstr = string.Empty;
+            if (Memberlevel!=null) {
+                setstr += ",Memberlevel="+ Memberlevel;
+            }
+            string sql = string.Format("SET Integral={0}{2} WHERE 1=1 {1}", Integral, wherestr, setstr);
+            return CollectionDB.GetInstance().Update<UserAccount>(sql);
         }
     }
 }

@@ -11,7 +11,7 @@ namespace Collection.Api.Service.Trade {
         /// </summary>
         protected override void ExecuteMethod() {
           
-            this.Result.Data = tradeRep.GetTradeList(this.Parameter.pageindex,this.Parameter.pagesize,this.Parameter.UserAccountId);
+            this.Result.Data = tradeRep.GetTradeList(this.Parameter.pageindex,this.Parameter.pagesize,this.Parameter.UserAccountId,this.Parameter.State);
         }
     }
 }

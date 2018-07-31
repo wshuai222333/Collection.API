@@ -10,7 +10,7 @@ namespace Collection.PetaPoco.Repositories.Collection {
             return CollectionDB.GetInstance().Insert(model);
         }
         public int Delete(int BankCardId) {
-            return CollectionDB.GetInstance().Delete(BankCardId);
+            return CollectionDB.GetInstance().Delete<BankCard>(BankCardId);
         }
 
         public List<BankCard> GetBankCardList(int UserAccountId) {
@@ -27,8 +27,8 @@ ORDER BY CreateTime DESC", wherestr);
         public BankCard GetBankCard(BankCard model) {
             string sql = string.Empty;
             string wherestr = string.Empty;
-            wherestr += "and CardId =@0";
-            wherestr += "and UserAccountId =@1";
+            wherestr += " and CardId =@0 ";
+            wherestr += " and UserAccountId =@1 ";
             sql = string.Format(@"
 SELECT  *
 FROM    dbo.BankCard

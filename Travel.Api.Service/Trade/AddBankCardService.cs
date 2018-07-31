@@ -21,7 +21,8 @@ namespace Collection.Api.Service.Trade {
                 Phone = this.Parameter.Phone,
                 Type = this.Parameter.Type,
                 UserAccountId = this.Parameter.UserAccountId,
-                CreateTime = DateTime.Now
+                CreateTime = DateTime.Now,
+                AcctIdCard = this.Parameter.AcctIdCard
             };
             if (bankCardRep.GetBankCard(bankCard)!=null) {
                 throw new AggregateException("卡号已存在，请检查卡号！");

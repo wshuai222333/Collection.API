@@ -18,19 +18,21 @@ namespace Collection.PetaPoco.Repositories.Collection {
             return CollectionDB.GetInstance().Update<Trade>(sql, State, OrderId, PlatFormId);
         }
        
-        public Page<Trade> GetTradeList(int pageindex, int pagesize,int? UserAccountId) {
+        public Page<Trade> GetTradeList(int pageindex, int pagesize,int? UserAccountId,int State) {
             string sql = string.Empty;
             string wherestr = string.Empty;
             if (UserAccountId != null) {
-                wherestr += "and UserAccountId =@0";
+                wherestr += "and UserAccountId =@0 ";
             }
-            
+            if (State >-1) {
+                wherestr += "and State =@1 ";
+            }
             sql = string.Format(@"
 SELECT  *
 FROM    dbo.Trade
 WHERE 1=1 {0}
 ORDER BY CreateTime DESC", wherestr);
-            return CollectionDB.GetInstance().Page<Trade>(pageindex, pagesize, sql, UserAccountId);
+            return CollectionDB.GetInstance().Page<Trade>(pageindex, pagesize, sql, UserAccountId, State);
         }
     }
 }

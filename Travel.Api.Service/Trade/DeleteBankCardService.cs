@@ -1,6 +1,6 @@
 ﻿using Collection.Api.DTO.Trade;
 using Collection.PetaPoco.Repositories.Collection;
-using System;
+using System;  
 using System.Collections.Generic;
 using System.Text;
 
