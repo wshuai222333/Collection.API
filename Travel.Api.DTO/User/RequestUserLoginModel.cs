@@ -5,5 +5,7 @@ namespace CollectionApi.DTO.User {
         public string UserName { get; set;}
 
         public string UserPwd { get; set; }
+
+        public int? UserAccountId { get; set; }
     }
 }

@@ -17,11 +17,12 @@ namespace Collection.Api.Service.User {
                 Memberlevel = 0,
                 ModifyTime = DateTime.Now,
                 UserName = this.Parameter.UserName,
-                UserPwd = this.Parameter.UserPwd
+                UserPwd = this.Parameter.UserPwd,
+                UserAccountId = this.Parameter.UserAccountId ?? 0
             };
             var user = userAccountRep.GetUserAccount(useraccount);
             if (user!=null) {
-                this.Result.Data = userAccountRep.GetUserAccount(useraccount);
+                this.Result.Data = user;
             } else {
                 throw new AggregateException("用户名或密码不正确！");
             }
