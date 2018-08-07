@@ -1,6 +1,9 @@
+using Collection.Api.DTO.Trade;
+using Collection.DDD.Utils.Http;
 using Collection.Entity.CollectionModel;
 using Collection.PetaPoco.Repositories.Collection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Newtonsoft.Json;
 
 namespace UnitTestProject1 {
     [TestClass]
@@ -37,6 +40,20 @@ namespace UnitTestProject1 {
             } else {
                 return 0;
             }
+        }
+        [TestMethod]
+        public void TestPostPay() {
+            var data = new RequestTradePay() {
+               AcctCardno="111",
+                AcctIdcard = "123123",
+                 AcctName = ""
+                 
+            };
+            string RequestEncodingName = "UTF-8";
+            string ParameterEncodingName = "UTF-8";
+            var encoding = System.Text.Encoding.GetEncoding(ParameterEncodingName);
+            string html = HttpRequest.HttpRequestUtility.SendPostRequestCore("http://localhost:1184/Pay/Pay", JsonConvert.SerializeObject(data), RequestEncodingName, null);
+            string ss = html;
         }
     }
 }

@@ -32,6 +32,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Collection.PetaPoco.Repositories\Collection.PetaPoco.Repositories.csproj" />
+    <ProjectReference Include="..\Travel.Api.DTO\Collection.Api.DTO.csproj" />
   </ItemGroup>
 
 </Project>

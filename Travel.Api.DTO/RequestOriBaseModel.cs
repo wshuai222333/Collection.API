@@ -12,7 +12,7 @@ namespace Collection.Api.DTO
     /// 统一提交基类
     /// </summary>
     public abstract class RequestOriBaseModel {
-        public string MerchantId { get; set; }
+        public string AgentId { get; set; }
         /// <summary>
         /// 时间戳
         /// </summary>

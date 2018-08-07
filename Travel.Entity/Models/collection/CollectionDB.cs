@@ -33,7 +33,6 @@ namespace Collection.Entity.CollectionModel
 		private static string GetConn()
         {
             return JsonConfig.JsonRead("collectioConnection");
-            //return "Data Source=210.51.165.107;Initial Catalog=Collection;MultipleActiveResultSets=True;user id=tladmin;password=fxtx2011@))(;";
         }
 
         private static SqlConnection OpenConnection(string name)
@@ -212,6 +211,52 @@ namespace Collection.Entity.CollectionModel
 		[Column] public int? UserAccountId {get;set;}
 		[Column] public DateTime? CreateTime {get;set;}
 		[Column] public string AcctIdCard {get;set;}
+		
+	 }
+	
+	 [TableName("dbo.Agent")]
+	 [PrimaryKey("AgentId")]
+	 [ExplicitColumns]
+     public partial class Agent:CollectionDB.Record<Agent>
+	 {
+		
+		[Column] public int AgentId {get;set;}
+		[Column] public string MerchantName {get;set;}
+		[Column] public string MerchantIP {get;set;}
+		[Column] public DateTime? CreateTime {get;set;}
+		[Column] public long? CreateUserID {get;set;}
+		[Column] public DateTime? UpdateTime {get;set;}
+		[Column] public long? UpdateUserID {get;set;}
+		[Column] public string MerchantCode {get;set;}
+		[Column] public string UserKey {get;set;}
+		
+	 }
+	
+	 [TableName("dbo.AgentTrade")]
+	 [ExplicitColumns]
+     public partial class AgentTrade:CollectionDB.Record<AgentTrade>
+	 {
+		
+		[Column] public int TradeId {get;set;}
+		[Column] public string TradeOrderId {get;set;}
+		[Column] public decimal? Amount {get;set;}
+		[Column] public string CardId {get;set;}
+		[Column] public string MobileNo {get;set;}
+		[Column] public string BankName {get;set;}
+		[Column] public string BankNum {get;set;}
+		[Column] public string AcctCardNo {get;set;}
+		[Column] public string AcctName {get;set;}
+		[Column] public string AcctIdCard {get;set;}
+		[Column] public decimal? TradeRate {get;set;}
+		[Column] public string TradeRateCode {get;set;}
+		[Column] public DateTime? CreateTime {get;set;}
+		[Column] public int? State {get;set;}
+		[Column] public string FailMessage {get;set;}
+		[Column] public int? UserAccountId {get;set;}
+		[Column] public string PlatFormId {get;set;}
+		[Column] public int? AgentId {get;set;}
+		[Column] public string RetUrl {get;set;}
+		[Column] public string BgRetUrl {get;set;}
 		
 	 }
 	

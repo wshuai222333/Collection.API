@@ -23,7 +23,7 @@ namespace Collection.Api.Controllers.Trade {
                 tradeRep.UpdateState(1, ord_id, platform_seq_id);
                 var userAccount = userAccountRep.GetUserAccount(new UserAccount() {  UserAccountId = userAccountId });
                 var totalIntegral = (int)((int)userAccount.Integral + decimal.Parse(trans_amt) / 1000);
-                var Memberlevel = this.RetrueMemberlevel(totalIntegral);
+                var Memberlevel = RetrueMemberlevel(totalIntegral);
                 if (Memberlevel> userAccount.Memberlevel) {
                     userAccountRep.AddIntegral(userAccountId, totalIntegral, Memberlevel);
                 } else {
@@ -34,6 +34,23 @@ namespace Collection.Api.Controllers.Trade {
                 tradeRep.UpdateState(2, ord_id, platform_seq_id);
                 return Content("ECHO_SEQ_ID=");
             }
+        }
+        public int RetrueMemberlevel(int Integral) {
+
+            if (Integral >= 100 && Integral < 500) {
+                return 1;
+            } else if (Integral >= 500 && Integral < 1000) {
+                return 2;
+            } else if (Integral >= 1000 && Integral < 2000) {
+                return 3;
+            } else if (Integral >= 2000 && Integral < 5000) {
+                return 4;
+            } else if (Integral >= 5000) {
+                return 5;
+            } else {
+                return 0;
+            }
+
         }
     }
 }

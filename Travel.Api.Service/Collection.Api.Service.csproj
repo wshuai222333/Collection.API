@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Collection.Dingshuapay.Service\Collection.Dingshuapay.Service.csproj" />
     <ProjectReference Include="..\Collection.PetaPoco.Repositories\Collection.PetaPoco.Repositories.csproj" />
     <ProjectReference Include="..\Travel.Api.DTO\Collection.Api.DTO.csproj" />
     <ProjectReference Include="..\Travel.DDD\Collection.DDD.csproj" />

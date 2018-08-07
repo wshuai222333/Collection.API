@@ -39,5 +39,6 @@
     <ProjectReference Include="..\Travel.Api.DTO\Collection.Api.DTO.csproj" />
     <ProjectReference Include="..\Travel.DDD\Collection.DDD.csproj" />
   </ItemGroup>
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JSONSchema="" /></VisualStudio></ProjectExtensions>
 
 </Project>
