@@ -60,21 +60,20 @@ namespace Collection.Api.Service {
             var agent = agentRep.GetAgent(new Agent() { AgentId = int.Parse(this.Parameter.AgentId) });
 
             //验证sign
-            if (!this.Parameter.Sign.Equals(GetMySign(agent.UserKey))) {
-                throw new ApiSignException("Sign");
-            }
-            ////验证数据 
-            //if (!this.Parameter.IsValid)
-            //{
-            //    throw new ValidationException("IsValid", this.Parameter.GetRuleViolationMessages());
+            //if (!this.Parameter.Sign.Equals(GetMySign(agent.UserKey))) {
+            //    throw new ApiSignException("Sign");
             //}
+            //验证数据 
+            if (!this.Parameter.IsValid) {
+                throw new ValidationException("IsValid", this.Parameter.GetRuleViolationMessages());
+            }
         }
         /// <summary>
         /// 获取MySign
         /// </summary>
         private string GetMySign(string userkey) {
             //MySign =(MerchantId = 12345 & TimesTamp = 2017 - 01 - 25 10:21:49 & Ip=167.0.12.31 & MAC = aaaa)+UserKey的值
-            string MySign = Encrpty.MD5Encrypt(string.Format(@"MerchantId={0}&TimesTamp={1}&Ip={2}&Mac={3}{4}"
+            string MySign = Encrpty.MD5Encrypt(string.Format(@"AgentId={0}&TimesTamp={1}&Ip={2}&Mac={3}{4}"
                         , this.Parameter.AgentId
                         , this.Parameter.TimesTamp
                         , this.Parameter.Ip
@@ -82,6 +81,5 @@ namespace Collection.Api.Service {
                         , userkey));
             return MySign;
         }
-
     }
 }

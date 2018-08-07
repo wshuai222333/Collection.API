@@ -13,7 +13,7 @@ namespace Collection.Api.Controllers.Trade {
 
         #endregion
         [HttpPost]
-        public ActionResult Pay(string Subject, string TransAmt, string CardId, string MobileNo, string AcctName, string AcctIdcard, string BankNum, string AcctCardno, string RetUrl, string BgRetUrl, string MerPriv, string Extension, string OrderId) {
+        public ActionResult Pay(string Subject, string TransAmt, string CardId, string MobileNo, string AcctName, string AcctIdcard, string BankNum, string AcctCardno, string RetUrl, string BgRetUrl, string MerPriv, string Extension, string OrderId, string AgentId,string Ip,string Mac,string TimesTamp,string Sign,string Version) {
             var model = new RequestTradePay() {
                 AcctCardno = AcctCardno,
                 AcctIdcard = AcctIdcard,
@@ -27,10 +27,22 @@ namespace Collection.Api.Controllers.Trade {
                 OrderId = OrderId,
                 TransAmt = TransAmt,
                 Subject = Subject,
-                RetUrl = RetUrl
+                RetUrl = RetUrl,
+                AgentId = AgentId,
+                Ip = Ip,
+                Mac = Mac,
+                TimesTamp = TimesTamp,
+                Sign = Sign,
+                Version = Version
             };
-            var data = tradePayService.Execute(model).Data;
-            return Content(data.ToString(), "text/html");
+            var data = tradePayService.Execute(model);
+            var Data = "异常结果";
+            if (data.Status == 100) {
+                Data = data.Data.ToString();
+            } else {
+                Data = data.Message;
+            }
+            return Content(Data, "text/html");
         }
     }
 }

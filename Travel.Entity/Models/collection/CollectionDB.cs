@@ -233,30 +233,28 @@ namespace Collection.Entity.CollectionModel
 	 }
 	
 	 [TableName("dbo.AgentTrade")]
+	 [PrimaryKey("AgentTradeId")]
 	 [ExplicitColumns]
      public partial class AgentTrade:CollectionDB.Record<AgentTrade>
 	 {
 		
-		[Column] public int TradeId {get;set;}
+		[Column] public int AgentTradeId {get;set;}
 		[Column] public string TradeOrderId {get;set;}
 		[Column] public decimal? Amount {get;set;}
 		[Column] public string CardId {get;set;}
 		[Column] public string MobileNo {get;set;}
-		[Column] public string BankName {get;set;}
 		[Column] public string BankNum {get;set;}
 		[Column] public string AcctCardNo {get;set;}
 		[Column] public string AcctName {get;set;}
 		[Column] public string AcctIdCard {get;set;}
 		[Column] public decimal? TradeRate {get;set;}
-		[Column] public string TradeRateCode {get;set;}
 		[Column] public DateTime? CreateTime {get;set;}
 		[Column] public int? State {get;set;}
-		[Column] public string FailMessage {get;set;}
-		[Column] public int? UserAccountId {get;set;}
 		[Column] public string PlatFormId {get;set;}
 		[Column] public int? AgentId {get;set;}
 		[Column] public string RetUrl {get;set;}
 		[Column] public string BgRetUrl {get;set;}
+		[Column] public string Subject {get;set;}
 		
 	 }
 	

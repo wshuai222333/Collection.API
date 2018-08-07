@@ -4,10 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Collection.PetaPoco.Repositories.Collection
-{
-    public class AgentTradeRep
-    {
+namespace Collection.PetaPoco.Repositories.Collection {
+    public class AgentTradeRep {
         public object Insert(AgentTrade model) {
             return CollectionDB.GetInstance().Insert(model);
         }
@@ -15,7 +13,22 @@ namespace Collection.PetaPoco.Repositories.Collection
             string sql = "set State=@0,PlatFormId=@2 where [TradeOrderId]=@1";
             return CollectionDB.GetInstance().Update<AgentTrade>(sql, State, OrderId, PlatFormId);
         }
-
+        public AgentTrade GetAgentTrade(AgentTrade model) {
+            #region sql
+            string wherestr = string.Empty;
+            if (!string.IsNullOrWhiteSpace(model.TradeOrderId)) {
+                wherestr += " AND TradeOrderId = @0 ";
+            }
+            string sql = string.Format(@"
+SELECT  *
+FROM    [dbo].[AgentTrade]
+WHERE   1 = 1
+        {0} ", wherestr);
+            #endregion
+            var agentTrade = CollectionDB.GetInstance().SingleOrDefault<AgentTrade>(sql,
+                model.TradeOrderId);
+            return agentTrade;
+        }
         public Page<AgentTrade> GetTradeList(int pageindex, int pagesize, int? AgentId, int State) {
             string sql = string.Empty;
             string wherestr = string.Empty;
