@@ -25,7 +25,7 @@ namespace Collection.Api {
             .UseContentRoot(Directory.GetCurrentDirectory())
             .UseIISIntegration()
             .UseStartup<Startup>()
-            .UseUrls("http://*:7002")
+            .UseUrls("http://*:7001")
             .Build();
     }
 }

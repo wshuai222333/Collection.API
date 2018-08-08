@@ -27,8 +27,8 @@ namespace Collection.Dingshuapay.Service {
                 + pay.AcctIdcard
                 + pay.BankNum
                 + pay.AcctCardno
-                + JsonConfig.JsonRead("trade_rate", "Dingshuapay")
-                + JsonConfig.JsonRead("draw_fee", "Dingshuapay")
+                + pay.TradeRate
+                + pay.DrawFee
                 + pay.RetUrl
                 + this.UrlEncode(UrlNotify, utf8, true)
                 + pay.MerPriv
@@ -51,8 +51,8 @@ namespace Collection.Dingshuapay.Service {
             sbHtml.Append("<input type='hidden' name='acct_idcard' value='" + pay.AcctIdcard + "'/>");
             sbHtml.Append("<input type='hidden' name='bank_num' value='" + pay.BankNum + "'/>");
             sbHtml.Append("<input type='hidden' name='acct_cardno' value='" + pay.AcctCardno + "'/>");
-            sbHtml.Append("<input type='hidden' name='trade_rate' value='" + JsonConfig.JsonRead("trade_rate", "Dingshuapay") + "'/>");
-            sbHtml.Append("<input type='hidden' name='draw_fee' value='" + JsonConfig.JsonRead("draw_fee", "Dingshuapay") + "'/>");
+            sbHtml.Append("<input type='hidden' name='trade_rate' value='" + pay.TradeRate + "'/>");
+            sbHtml.Append("<input type='hidden' name='draw_fee' value='" + pay.DrawFee + "'/>");
             sbHtml.Append("<input type='hidden' name='ret_url' value='" + pay.RetUrl + "'/>");
             sbHtml.Append("<input type='hidden' name='bg_ret_url' value='" + this.UrlEncode(UrlNotify, utf8, true) + "'/>");
             sbHtml.Append("<input type='hidden' name='mer_priv' value='" + pay.MerPriv + "'/>");

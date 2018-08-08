@@ -16,6 +16,9 @@ namespace Collection.Api.Service.Trade {
         #endregion
 
         protected override void ExecuteMethod() {
+            if (decimal.Parse(this.Parameter.TradeRate) < decimal.Parse(JsonConfig.JsonRead("trade_rate", "Dingshuapay"))) {
+                throw new AggregateException("手续费费率小于协议费率");
+            }
             var agentTrade = new AgentTrade() {
                 AcctCardNo = this.Parameter.AcctCardno,
                 AcctIdCard = this.Parameter.AcctIdcard,
@@ -30,8 +33,11 @@ namespace Collection.Api.Service.Trade {
                 RetUrl = this.Parameter.RetUrl,
                 State = 0,
                 TradeOrderId = this.Parameter.OrderId,
-                TradeRate = decimal.Parse(JsonConfig.JsonRead("trade_rate", "Dingshuapay")),
-                Subject = this.Parameter.Subject
+                TradeRate = decimal.Parse(this.Parameter.TradeRate),
+                Subject = this.Parameter.Subject,
+                DrawFee = decimal.Parse(this.Parameter.DrawFee),
+                MerPriv = this.Parameter.MerPriv,
+                Extension = this.Parameter.Extension
             };
             agentTradeRep.Insert(agentTrade);
             this.Result.Data = payProcessor.ExecuteForm(this.Parameter);

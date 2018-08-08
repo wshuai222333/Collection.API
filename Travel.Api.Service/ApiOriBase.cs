@@ -60,9 +60,9 @@ namespace Collection.Api.Service {
             var agent = agentRep.GetAgent(new Agent() { AgentId = int.Parse(this.Parameter.AgentId) });
 
             //验证sign
-            //if (!this.Parameter.Sign.Equals(GetMySign(agent.UserKey))) {
-            //    throw new ApiSignException("Sign");
-            //}
+            if (!this.Parameter.Sign.Equals(GetMySign(agent.UserKey))) {
+                throw new ApiSignException("Sign");
+            }
             //验证数据 
             if (!this.Parameter.IsValid) {
                 throw new ValidationException("IsValid", this.Parameter.GetRuleViolationMessages());

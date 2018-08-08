@@ -19,5 +19,7 @@ namespace Collection.Api.DTO.Middle
         public string MerPriv { get; set; }
 
         public string Extension { get; set; }
+
+        public string AgentId { get; set; }
     }
 }

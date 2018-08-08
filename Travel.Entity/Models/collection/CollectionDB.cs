@@ -248,6 +248,7 @@ namespace Collection.Entity.CollectionModel
 		[Column] public string AcctName {get;set;}
 		[Column] public string AcctIdCard {get;set;}
 		[Column] public decimal? TradeRate {get;set;}
+		[Column] public decimal? DrawFee {get;set;}
 		[Column] public DateTime? CreateTime {get;set;}
 		[Column] public int? State {get;set;}
 		[Column] public string PlatFormId {get;set;}
@@ -255,6 +256,8 @@ namespace Collection.Entity.CollectionModel
 		[Column] public string RetUrl {get;set;}
 		[Column] public string BgRetUrl {get;set;}
 		[Column] public string Subject {get;set;}
+		[Column] public string MerPriv {get;set;}
+		[Column] public string Extension {get;set;}
 		
 	 }
 	

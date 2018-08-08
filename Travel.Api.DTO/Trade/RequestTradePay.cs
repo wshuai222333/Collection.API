@@ -10,7 +10,7 @@ namespace Collection.Api.DTO.Trade
 
         [Required(ErrorMessage = "必须填写")]
         public string Subject { get; set; }
-        [MoneyAttribute(MessageType.MoneyField, null, ErrorMessage = "金额格式有误!")]
+        [MoneyAttribute(MessageType.MoneyField, null, ErrorMessage = "交易金额格式有误!")]
         public string TransAmt { get; set; }
         [Required(ErrorMessage = "必须填写")]
         public string CardId { get; set; }
@@ -34,5 +34,9 @@ namespace Collection.Api.DTO.Trade
         public string Extension { get; set; }
         [Required(ErrorMessage = "必须填写")]
         public string OrderId { get; set; }
+        [MoneyAttribute(MessageType.MoneyField, null, ErrorMessage = "交易手续费率格式有误!")]
+        public string TradeRate { get; set; }
+        [MoneyAttribute(MessageType.MoneyField, null, ErrorMessage = "单笔提现费格式有误!")]
+        public string DrawFee { get; set; }
     }
 }

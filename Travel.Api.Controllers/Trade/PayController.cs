@@ -1,6 +1,5 @@
 ﻿using Collection.Api.DTO.Trade;
 using Collection.Api.Service.Trade;
-using Collection.Dingshuapay.Service;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Collection.Api.Controllers.Trade {
@@ -13,7 +12,7 @@ namespace Collection.Api.Controllers.Trade {
 
         #endregion
         [HttpPost]
-        public ActionResult Pay(string Subject, string TransAmt, string CardId, string MobileNo, string AcctName, string AcctIdcard, string BankNum, string AcctCardno, string RetUrl, string BgRetUrl, string MerPriv, string Extension, string OrderId, string AgentId,string Ip,string Mac,string TimesTamp,string Sign,string Version) {
+        public ActionResult Pay(string Subject, string TransAmt, string CardId, string MobileNo, string AcctName, string AcctIdcard, string BankNum, string AcctCardno, string RetUrl, string BgRetUrl, string MerPriv, string Extension, string OrderId, string AgentId, string Ip, string Mac, string TimesTamp, string Sign, string Version, string TradeRate, string DrawFee) {
             var model = new RequestTradePay() {
                 AcctCardno = AcctCardno,
                 AcctIdcard = AcctIdcard,
@@ -33,7 +32,9 @@ namespace Collection.Api.Controllers.Trade {
                 Mac = Mac,
                 TimesTamp = TimesTamp,
                 Sign = Sign,
-                Version = Version
+                Version = Version,
+                TradeRate = TradeRate,
+                DrawFee = DrawFee
             };
             var data = tradePayService.Execute(model);
             var Data = "异常结果";
