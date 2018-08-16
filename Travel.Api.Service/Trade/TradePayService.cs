@@ -19,6 +19,12 @@ namespace Collection.Api.Service.Trade {
             if (decimal.Parse(this.Parameter.TradeRate) < decimal.Parse(JsonConfig.JsonRead("trade_rate", "Dingshuapay"))) {
                 throw new AggregateException("手续费费率小于协议费率");
             }
+            if (decimal.Parse(this.Parameter.DrawFee) < decimal.Parse(JsonConfig.JsonRead("draw_fee", "Dingshuapay"))) {
+                throw new AggregateException("提现手续小于协议费用");
+            }
+            if (decimal.Parse(this.Parameter.TransAmt) < 300) {
+                throw new AggregateException("交易金额不能小于300");
+            }
             var agentTrade = new AgentTrade() {
                 AcctCardNo = this.Parameter.AcctCardno,
                 AcctIdCard = this.Parameter.AcctIdcard,

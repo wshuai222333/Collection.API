@@ -20,7 +20,8 @@ namespace Collection.Api.Service.User {
                 ModifyTime = DateTime.Now,
                 Phone = this.Parameter.UserPhone,
                 UserName = this.Parameter.UserName,
-                UserPwd = this.Parameter.UserPwd
+                UserPwd = this.Parameter.UserPwd,
+                Integral = 0
             };
             var user = userAccountRep.GetUserAccount(useraccount);
             if (user != null) {

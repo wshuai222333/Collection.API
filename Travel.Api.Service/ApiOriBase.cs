@@ -61,6 +61,7 @@ namespace Collection.Api.Service {
 
             //验证sign
             if (!this.Parameter.Sign.Equals(GetMySign(agent.UserKey))) {
+                LoggerFactory.Instance.Logger_Debug(GetMySignStr(agent.UserKey)+"|"+ GetMySign(agent.UserKey)+"|"+ this.Parameter.Sign, "SignError");
                 throw new ApiSignException("Sign");
             }
             //验证数据 
@@ -72,7 +73,6 @@ namespace Collection.Api.Service {
         /// 获取MySign
         /// </summary>
         private string GetMySign(string userkey) {
-            //MySign =(MerchantId = 12345 & TimesTamp = 2017 - 01 - 25 10:21:49 & Ip=167.0.12.31 & MAC = aaaa)+UserKey的值
             string MySign = Encrpty.MD5Encrypt(string.Format(@"AgentId={0}&TimesTamp={1}&Ip={2}&Mac={3}{4}"
                         , this.Parameter.AgentId
                         , this.Parameter.TimesTamp
@@ -80,6 +80,14 @@ namespace Collection.Api.Service {
                         , this.Parameter.Mac
                         , userkey));
             return MySign;
+        }
+        private string GetMySignStr(string userkey) {
+            return string.Format(@"AgentId={0}&TimesTamp={1}&Ip={2}&Mac={3}{4}"
+                        , this.Parameter.AgentId
+                        , this.Parameter.TimesTamp
+                        , this.Parameter.Ip
+                        , this.Parameter.Mac
+                        , userkey);
         }
     }
 }
