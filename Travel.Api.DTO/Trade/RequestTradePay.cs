@@ -32,7 +32,7 @@ namespace Collection.Api.DTO.Trade
         public string MerPriv { get; set; }
         
         public string Extension { get; set; }
-        [Required(ErrorMessage = "必须填写")]
+        [OrderIdAttribute(MessageType.OrderIdField, null, ErrorMessage = "订单号长度有误!")]
         public string OrderId { get; set; }
         [MoneyAttribute(MessageType.MoneyField, null, ErrorMessage = "交易手续费率格式有误!")]
         public string TradeRate { get; set; }

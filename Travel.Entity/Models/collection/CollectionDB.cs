@@ -258,6 +258,7 @@ namespace Collection.Entity.CollectionModel
 		[Column] public string Subject {get;set;}
 		[Column] public string MerPriv {get;set;}
 		[Column] public string Extension {get;set;}
+		[Column] public string OrderId {get;set;}
 		
 	 }
 	

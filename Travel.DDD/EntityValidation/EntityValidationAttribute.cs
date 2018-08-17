@@ -100,7 +100,14 @@ namespace Collection.DDD.EntityValidation {
                 return new Regex(@"^\d+\.\d{2}$");
             }
         }
-
+        /// <summary>
+        /// 验证订单号10-20位
+        /// </summary>
+        protected virtual Regex rOrderId {
+            get {
+                return new Regex(@"^\d{10,20}$");
+            }
+        }
         #endregion
 
     }

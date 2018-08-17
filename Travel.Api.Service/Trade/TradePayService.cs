@@ -25,6 +25,9 @@ namespace Collection.Api.Service.Trade {
             if (decimal.Parse(this.Parameter.TransAmt) < 300) {
                 throw new AggregateException("交易金额不能小于300");
             }
+            if (agentTradeRep.GetAgentTrade(new AgentTrade() { OrderId = this.Parameter.AgentId+this.Parameter.OrderId })!=null) {
+                throw new AggregateException("订单号重复");
+            }
             var agentTrade = new AgentTrade() {
                 AcctCardNo = this.Parameter.AcctCardno,
                 AcctIdCard = this.Parameter.AcctIdcard,
@@ -43,7 +46,8 @@ namespace Collection.Api.Service.Trade {
                 Subject = this.Parameter.Subject,
                 DrawFee = decimal.Parse(this.Parameter.DrawFee),
                 MerPriv = this.Parameter.MerPriv,
-                Extension = this.Parameter.Extension
+                Extension = this.Parameter.Extension,
+                OrderId = this.Parameter.AgentId + this.Parameter.OrderId
             };
             agentTradeRep.Insert(agentTrade);
             this.Result.Data = payProcessor.ExecuteForm(this.Parameter);

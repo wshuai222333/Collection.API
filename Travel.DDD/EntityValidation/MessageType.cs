@@ -59,5 +59,9 @@
         /// 金钱验证（小数2位）
         /// </summary>
         MoneyField,
+        /// <summary>
+        /// 订单号验证
+        /// </summary>
+        OrderIdField
     }
 }

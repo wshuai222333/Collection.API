@@ -1,8 +1,5 @@
 ﻿using Collection.Entity.CollectionModel;
 using PetaPoco.NetCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Collection.PetaPoco.Repositories.Collection {
     public class AgentTradeRep {
@@ -19,14 +16,17 @@ namespace Collection.PetaPoco.Repositories.Collection {
             if (!string.IsNullOrWhiteSpace(model.TradeOrderId)) {
                 wherestr += " AND TradeOrderId = @0 ";
             }
+            if (!string.IsNullOrWhiteSpace(model.OrderId)) {
+                wherestr += " AND OrderId = @1 ";
+            }
             string sql = string.Format(@"
 SELECT  *
 FROM    [dbo].[AgentTrade]
 WHERE   1 = 1
         {0} ", wherestr);
             #endregion
-            var agentTrade = CollectionDB.GetInstance().SingleOrDefault<AgentTrade>(sql,
-                model.TradeOrderId);
+            var agentTrade = CollectionDB.GetInstance().FirstOrDefault<AgentTrade>(sql,
+                model.TradeOrderId, model.OrderId);
             return agentTrade;
         }
         public Page<AgentTrade> GetTradeList(int pageindex, int pagesize, int? AgentId, int State) {
