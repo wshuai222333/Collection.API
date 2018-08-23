@@ -20,6 +20,8 @@ namespace Collection.Api.Service {
         /// 用户信息仓储
         /// </summary>
         public AgentRep agentRep { get; set; }
+
+        public Agent agent { get; set; }
         /// <summary>
         /// 返回实体
         /// </summary>
@@ -57,8 +59,11 @@ namespace Collection.Api.Service {
         /// 验证
         /// </summary>
         protected void Validate() {
-            var agent = agentRep.GetAgent(new Agent() { AgentId = int.Parse(this.Parameter.AgentId) });
 
+            var agentmodel = new Agent() { AgentId = int.Parse(this.Parameter.AgentId) };
+
+            agent = agentRep.GetAgent(agentmodel);
+            
             //验证sign
             if (!this.Parameter.Sign.Equals(GetMySign(agent.UserKey))) {
                 LoggerFactory.Instance.Logger_Debug(GetMySignStr(agent.UserKey)+"|"+ GetMySign(agent.UserKey)+"|"+ this.Parameter.Sign, "SignError");

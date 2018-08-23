@@ -214,24 +214,6 @@ namespace Collection.Entity.CollectionModel
 		
 	 }
 	
-	 [TableName("dbo.Agent")]
-	 [PrimaryKey("AgentId")]
-	 [ExplicitColumns]
-     public partial class Agent:CollectionDB.Record<Agent>
-	 {
-		
-		[Column] public int AgentId {get;set;}
-		[Column] public string MerchantName {get;set;}
-		[Column] public string MerchantIP {get;set;}
-		[Column] public DateTime? CreateTime {get;set;}
-		[Column] public long? CreateUserID {get;set;}
-		[Column] public DateTime? UpdateTime {get;set;}
-		[Column] public long? UpdateUserID {get;set;}
-		[Column] public string MerchantCode {get;set;}
-		[Column] public string UserKey {get;set;}
-		
-	 }
-	
 	 [TableName("dbo.AgentTrade")]
 	 [PrimaryKey("AgentTradeId")]
 	 [ExplicitColumns]
@@ -259,6 +241,33 @@ namespace Collection.Entity.CollectionModel
 		[Column] public string MerPriv {get;set;}
 		[Column] public string Extension {get;set;}
 		[Column] public string OrderId {get;set;}
+		[Column] public DateTime? TradeTime {get;set;}
+		[Column] public decimal? AgentRate {get;set;}
+		[Column] public decimal? Poundage {get;set;}
+		[Column] public decimal? Profits {get;set;}
+		
+	 }
+	
+	 [TableName("dbo.Agent")]
+	 [PrimaryKey("AgentId")]
+	 [ExplicitColumns]
+     public partial class Agent:CollectionDB.Record<Agent>
+	 {
+		
+		[Column] public int AgentId {get;set;}
+		[Column] public string MerchantName {get;set;}
+		[Column] public string MerchantIP {get;set;}
+		[Column] public DateTime? CreateTime {get;set;}
+		[Column] public long? CreateUserID {get;set;}
+		[Column] public DateTime? UpdateTime {get;set;}
+		[Column] public long? UpdateUserID {get;set;}
+		[Column] public string MerchantCode {get;set;}
+		[Column] public string UserKey {get;set;}
+		[Column] public decimal? Rate {get;set;}
+		[Column] public string UserName {get;set;}
+		[Column] public string UserPwd {get;set;}
+		[Column] public string Phone {get;set;}
+		[Column] public decimal? Profits {get;set;}
 		
 	 }
 	

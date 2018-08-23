@@ -47,7 +47,10 @@ namespace Collection.Api.Service.Trade {
                 DrawFee = decimal.Parse(this.Parameter.DrawFee),
                 MerPriv = this.Parameter.MerPriv,
                 Extension = this.Parameter.Extension,
-                OrderId = this.Parameter.AgentId + this.Parameter.OrderId
+                OrderId = this.Parameter.AgentId + this.Parameter.OrderId,
+                AgentRate = agent.Rate,
+                Poundage = decimal.Parse(this.Parameter.TransAmt) * decimal.Parse(this.Parameter.TradeRate)/1000,
+                Profits = decimal.Parse(this.Parameter.TransAmt) * (decimal.Parse(this.Parameter.TradeRate)- agent.Rate) / 1000
             };
             agentTradeRep.Insert(agentTrade);
             this.Result.Data = payProcessor.ExecuteForm(this.Parameter);
