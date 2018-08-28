@@ -285,6 +285,8 @@ namespace Collection.Entity.CollectionModel
 		[Column] public int? Memberlevel {get;set;}
 		[Column] public string Phone {get;set;}
 		[Column] public int? Integral {get;set;}
+		[Column] public decimal? Rate {get;set;}
+		[Column] public decimal? UserRate {get;set;}
 		
 	 }
 	
@@ -311,6 +313,10 @@ namespace Collection.Entity.CollectionModel
 		[Column] public string FailMessage {get;set;}
 		[Column] public int? UserAccountId {get;set;}
 		[Column] public string PlatFormId {get;set;}
+		[Column] public int? IsQrcode {get;set;}
+		[Column] public decimal? Profits {get;set;}
+		[Column] public decimal? Rate {get;set;}
+		[Column] public decimal? Poundage {get;set;}
 		
 	 }
 

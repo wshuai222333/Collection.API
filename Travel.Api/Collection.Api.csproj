@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <None Include="Views\PayBack\PayBack.cshtml" />
+    <None Include="Views\CodePayBack\PayBack.cshtml" />
   </ItemGroup>
 
   <ItemGroup>

@@ -34,7 +34,7 @@ namespace Collection.Api.Controllers.Trade {
             };
             string content = Newtonsoft.Json.JsonConvert.SerializeObject(agentResponseModel);
             string result = DDD.Utils.Http.HtttApiRequest.apiPost(agentTrade.BgRetUrl, content);
-            LoggerFactory.Instance.Logger_Info(agentTrade+"|"+ord_id +"|"+ result, "TradeNotifyresult");
+            LoggerFactory.Instance.Logger_Info(agentTrade+"|"+ord_id +"|"+ content + "|" + result, "TradeNotifyresult");
             return Content("ECHO_SEQ_ID=" + ord_id);
         }
     }

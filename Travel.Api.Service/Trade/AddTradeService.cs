@@ -25,7 +25,11 @@ namespace Collection.Api.Service.Trade {
                 TradeRate = this.Parameter.TradeRate,
                 TradeRateCode = this.Parameter.TradeRateCode,
                 UserAccountId = this.Parameter.UserAccountId,
-                State = 0
+                State = 0,
+                IsQrcode = this.Parameter.IsQrcode,
+                Rate = this.Parameter.Rate,
+                Poundage = this.Parameter.Amount * this.Parameter.TradeRate/ 1000,
+                Profits = this.Parameter.Amount * (this.Parameter.TradeRate - this.Parameter.Rate) / 1000
             };
             this.Result.Data = tradeRep.Insert(trade);
         }

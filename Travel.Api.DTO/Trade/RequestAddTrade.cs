@@ -23,5 +23,12 @@
         public string TradeRateCode { get; set; }
 
         public int UserAccountId { get; set; }
+
+        public int IsQrcode { get; set; }
+
+        public decimal Rate { get; set; }
+
+
+
     }
 }
