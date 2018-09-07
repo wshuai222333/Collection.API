@@ -7,5 +7,7 @@
         public int pageindex { get; set; }
 
         public int pagesize { get; set; }
+
+        public int? IsQrcode { get; set; }
     }
 }

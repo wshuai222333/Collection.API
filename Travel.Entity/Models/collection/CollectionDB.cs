@@ -287,6 +287,7 @@ namespace Collection.Entity.CollectionModel
 		[Column] public int? Integral {get;set;}
 		[Column] public decimal? Rate {get;set;}
 		[Column] public decimal? UserRate {get;set;}
+		[Column] public int? IsQrcode {get;set;}
 		
 	 }
 	
@@ -317,6 +318,7 @@ namespace Collection.Entity.CollectionModel
 		[Column] public decimal? Profits {get;set;}
 		[Column] public decimal? Rate {get;set;}
 		[Column] public decimal? Poundage {get;set;}
+		[Column] public DateTime? TradeTime {get;set;}
 		
 	 }
 

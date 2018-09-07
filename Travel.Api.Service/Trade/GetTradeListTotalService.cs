@@ -1,8 +1,12 @@
 ﻿using Collection.Api.DTO.Trade;
 using Collection.PetaPoco.Repositories.Collection;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Linq;
 
 namespace Collection.Api.Service.Trade {
-    public class GetTradeListService : ApiOriBase<RequestGetTradeList> {
+    public class GetTradeListTotalService : ApiOriBase<RequestGetTradeList> {
         #region 注入服务
         public TradeRep tradeRep { get; set; }
         #endregion
@@ -10,8 +14,7 @@ namespace Collection.Api.Service.Trade {
         /// 执行方法
         /// </summary>
         protected override void ExecuteMethod() {
-          
-            this.Result.Data = tradeRep.GetTradeList(this.Parameter.pageindex,this.Parameter.pagesize,this.Parameter.UserAccountId,this.Parameter.State,this.Parameter.IsQrcode);
+            this.Result.Data = tradeRep.GetTradeLists(this.Parameter.UserAccountId, this.Parameter.State,this.Parameter.IsQrcode).Sum(i=>i.Profits);
         }
     }
 }

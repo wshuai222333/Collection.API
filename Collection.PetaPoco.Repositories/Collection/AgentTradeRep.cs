@@ -1,6 +1,7 @@
 ﻿using Collection.Entity.CollectionModel;
 using PetaPoco.NetCore;
 using System;
+using System.Collections.Generic;
 
 namespace Collection.PetaPoco.Repositories.Collection {
     public class AgentTradeRep {
@@ -57,6 +58,31 @@ FROM    dbo.AgentTrade
 WHERE 1=1 {0}
 ORDER BY CreateTime DESC", wherestr);
             return CollectionDB.GetInstance().Page<AgentTrade>(pageindex, pagesize, sql, AgentId, State, TradeOrderId, BeginTime, EndTime);
+        }
+        public List<AgentTrade> GetAgentTradeLists(int AgentId, int State, string TradeOrderId, DateTime? BeginTime, DateTime? EndTime) {
+            string sql = string.Empty;
+            string wherestr = string.Empty;
+            if (AgentId > 0) {
+                wherestr += " and AgentId =@0 ";
+            }
+            if (State > -1) {
+                wherestr += " and State =@1 ";
+            }
+            if (!string.IsNullOrWhiteSpace(TradeOrderId)) {
+                wherestr += " and TradeOrderId =@2 ";
+            }
+            if (BeginTime != null) {
+                wherestr += " and TradeTime >=@3 ";
+            }
+            if (EndTime != null) {
+                wherestr += " and TradeTime <@4 ";
+            }
+            sql = string.Format(@"
+SELECT  *
+FROM    dbo.AgentTrade
+WHERE 1=1 {0}
+ORDER BY CreateTime DESC", wherestr);
+            return CollectionDB.GetInstance().Fetch<AgentTrade>(sql, AgentId, State, TradeOrderId, BeginTime, EndTime);
         }
     }
 }

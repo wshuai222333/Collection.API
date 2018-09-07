@@ -31,7 +31,8 @@ namespace Collection.Api.Controllers.Trade {
                 }
                 return Content("ECHO_SEQ_ID=" + ord_id);
             } else {
-                tradeRep.UpdateState(2, ord_id, platform_seq_id);
+                tradeRep.UpdateStateFail(2, ord_id, platform_seq_id);
+                LoggerFactory.Instance.Logger_Info(strinfo, "TradeNotifyFail");
                 return Content("ECHO_SEQ_ID=");
             }
         }

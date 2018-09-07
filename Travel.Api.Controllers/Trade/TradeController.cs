@@ -15,11 +15,15 @@ namespace Collection.Api.Controllers.Trade {
 
         public GetTradeListService getTradeListService { get; set; }
 
+        public GetTradeListTotalService getTradeListTotalService { get; set; }
+
         public AddBankCardService addBankCardService { get; set; }
 
         public DeleteBankCardService deleteBankCardService { get; set; }
 
         public GetBankCardListService getBankCardListService { get; set; }
+
+
         #endregion
         [Route("AddTrade"), HttpPost]
         public async Task<ResponseMessageModel> AddTrade([FromBody]RequestAddTrade model) {
@@ -28,6 +32,10 @@ namespace Collection.Api.Controllers.Trade {
         [Route("GetTradeList"), HttpPost]
         public async Task<ResponseMessageModel> GetTradeList([FromBody]RequestGetTradeList model) {
             return await Task.Run(() => getTradeListService.Execute(model));
+        }
+        [Route("GetTradeTotal"), HttpPost]
+        public async Task<ResponseMessageModel> GetTradeTotal([FromBody]RequestGetTradeList model) {
+            return await Task.Run(() => getTradeListTotalService.Execute(model));
         }
         [Route("AddBankCard"), HttpPost]
         public async Task<ResponseMessageModel> AddBankCard([FromBody]RequestAddBankCard model) {
