@@ -57,7 +57,7 @@ SELECT  *
 FROM    dbo.AgentTrade
 WHERE 1=1 {0}
 ORDER BY CreateTime DESC", wherestr);
-            return CollectionDB.GetInstance().Page<AgentTrade>(pageindex, pagesize, sql, AgentId, State, TradeOrderId, BeginTime, EndTime);
+            return CollectionDB.GetInstance().Page<AgentTrade>(pageindex, pagesize, sql, AgentId, State, TradeOrderId, BeginTime, EndTime?.AddDays(1));
         }
         public List<AgentTrade> GetAgentTradeLists(int AgentId, int State, string TradeOrderId, DateTime? BeginTime, DateTime? EndTime) {
             string sql = string.Empty;
@@ -82,7 +82,7 @@ SELECT  *
 FROM    dbo.AgentTrade
 WHERE 1=1 {0}
 ORDER BY CreateTime DESC", wherestr);
-            return CollectionDB.GetInstance().Fetch<AgentTrade>(sql, AgentId, State, TradeOrderId, BeginTime, EndTime);
+            return CollectionDB.GetInstance().Fetch<AgentTrade>(sql, AgentId, State, TradeOrderId, BeginTime, EndTime?.AddDays(1));
         }
     }
 }

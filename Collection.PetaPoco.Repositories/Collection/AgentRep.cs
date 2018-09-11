@@ -1,4 +1,5 @@
 ﻿using Collection.Entity.CollectionModel;
+using PetaPoco.NetCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -53,6 +54,33 @@ WHERE   1 = 1
             #endregion
             return CollectionDB.GetInstance().SingleOrDefault<Agent>(sql,
                               model.UserName, model.UserPwd, model.AgentId);
+        }
+        public Page<Agent> GetAgentListByPage(int pageindex, int pagesize) {
+            #region sql
+            string wherestr = string.Empty;
+            string sql = string.Format(@"
+            SELECT  *
+            FROM    dbo.Agent
+            WHERE   1 = 1
+            {0}
+            ORDER BY CreateTime DESC
+            ", wherestr);
+            #endregion
+            return CollectionDB.GetInstance().Page<Agent>(pageindex, pagesize, sql);
+        }
+
+        public int UpdateAgent(Agent agent) {
+            #region sql
+            string wherestr = string.Empty;
+            wherestr += " AgentId = " + agent.AgentId;
+            string modifystr = string.Empty;
+            string sql = string.Format(@"
+            SET MerchantName=@1,Rate = @2,Phone=@3
+            WHERE 1 = 1
+            {0}
+             ", wherestr);
+            #endregion
+            return CollectionDB.GetInstance().Update<Agent>(sql,agent.MerchantName,agent.Rate,agent.Phone);
         }
     }
 }

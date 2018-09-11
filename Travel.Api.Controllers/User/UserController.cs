@@ -34,6 +34,8 @@ namespace Collection.Api.Controllers.User {
 
         public ModifyMemberlevelService modifyMemberlevelService { get; set; }
 
+        public ModifyQrcodeService modifyQrcodeService { get; set; }
+
         public ModifyRateService modifyRateService { get; set; }
         #endregion
         /// <summary>
@@ -95,6 +97,10 @@ namespace Collection.Api.Controllers.User {
         [Route("ModifyMemberlevel"), HttpPost]
         public async Task<ResponseMessageModel> ModifyMemberlevel([FromBody]RequestModifyMemberlevel model) {
             return await Task.Run(() => modifyMemberlevelService.Execute(model));
+        }
+        [Route("ModifyQrcode"), HttpPost]
+        public async Task<ResponseMessageModel> ModifyQrcode([FromBody]RequestModifyIsQrcode model) {
+            return await Task.Run(() => modifyQrcodeService.Execute(model));
         }
         [Route("ModifyRate"), HttpPost]
         public async Task<ResponseMessageModel> ModifyRate([FromBody]RequestModifyRate model) {

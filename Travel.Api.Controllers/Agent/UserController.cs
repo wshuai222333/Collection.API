@@ -14,6 +14,9 @@ namespace Collection.Api.Controllers.Agent {
         public AgentLoginService agentLoginService { get; set; }
 
         public AgentModifyPwdService agentModifyPwdService { get; set; }
+        public AddAgentService addAgentService { get; set; }
+
+        public AgentListService agentListService { get; set; }
 
         [Route("AgentLogin"), HttpPost]
         public async Task<ResponseMessageModel> UserLogin(RequestAgentLogin model) {
@@ -24,6 +27,15 @@ namespace Collection.Api.Controllers.Agent {
         [Route("AgentModifyPwd"), HttpPost]
         public async Task<ResponseMessageModel> AgentModifyPwd(RequestAgentModifyPassword model) {
             return await Task.Run(() => agentModifyPwdService.Execute(model));
+        }
+
+        [Route("AddAgent"), HttpPost]
+        public async Task<ResponseMessageModel> AddAgent(RequestAddAgent model) {
+            return await Task.Run(() => addAgentService.Execute(model));
+        }
+        [Route("AgentList"), HttpPost]
+        public async Task<ResponseMessageModel> AgentList(RequestAgentList model) {
+            return await Task.Run(() => agentListService.Execute(model));
         }
     }
 }

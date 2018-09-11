@@ -10,8 +10,7 @@ namespace Collection.Api.Service.Trade {
         /// 执行方法
         /// </summary>
         protected override void ExecuteMethod() {
-          
-            this.Result.Data = tradeRep.GetTradeList(this.Parameter.pageindex,this.Parameter.pagesize,this.Parameter.UserAccountId,this.Parameter.State,this.Parameter.IsQrcode);
+            this.Result.Data = tradeRep.GetTradeList(this.Parameter.pageindex, this.Parameter.pagesize, this.Parameter.UserAccountId, this.Parameter.State, this.Parameter.IsQrcode, this.Parameter.BeginTime, this.Parameter.EndTime);
         }
     }
 }
