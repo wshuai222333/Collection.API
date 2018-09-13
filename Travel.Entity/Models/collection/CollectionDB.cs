@@ -321,6 +321,18 @@ namespace Collection.Entity.CollectionModel
 		[Column] public DateTime? TradeTime {get;set;}
 		
 	 }
+	
+	 [TableName("dbo.Admin")]
+	 [ExplicitColumns]
+     public partial class Admin:CollectionDB.Record<Admin>
+	 {
+		
+		[Column] public int AdminId {get;set;}
+		[Column] public string UserName {get;set;}
+		[Column] public string UserPwd {get;set;}
+		[Column] public DateTime? CreateTime {get;set;}
+		
+	 }
 
 }
 

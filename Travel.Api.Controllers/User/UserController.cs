@@ -37,6 +37,10 @@ namespace Collection.Api.Controllers.User {
         public ModifyQrcodeService modifyQrcodeService { get; set; }
 
         public ModifyRateService modifyRateService { get; set; }
+
+        public GetAdviceListService getAdviceListService { get; set; }
+
+        public AdminLoginService adminLoginService { get; set; }
         #endregion
         /// <summary>
         /// 注册
@@ -105,6 +109,14 @@ namespace Collection.Api.Controllers.User {
         [Route("ModifyRate"), HttpPost]
         public async Task<ResponseMessageModel> ModifyRate([FromBody]RequestModifyRate model) {
             return await Task.Run(() => modifyRateService.Execute(model));
+        }
+        [Route("GetAdviceList"), HttpPost]
+        public async Task<ResponseMessageModel> GetAdviceList([FromBody]RequestGetProblemList model) {
+            return await Task.Run(() => getAdviceListService.Execute(model));
+        }
+        [Route("AdminLogin"), HttpPost]
+        public async Task<ResponseMessageModel> GetAdviceList([FromBody]RequestAdminLogin model) {
+            return await Task.Run(() => adminLoginService.Execute(model));
         }
     }
 }
