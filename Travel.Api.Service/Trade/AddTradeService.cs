@@ -28,8 +28,11 @@ namespace Collection.Api.Service.Trade {
                 State = 0,
                 IsQrcode = this.Parameter.IsQrcode,
                 Rate = this.Parameter.Rate,
-                Poundage = this.Parameter.Amount * this.Parameter.TradeRate/ 1000,
-                Profits = this.Parameter.Amount * (this.Parameter.TradeRate - this.Parameter.Rate) / 1000
+                Poundage = this.Parameter.Amount * this.Parameter.TradeRate / 1000,
+                Profits = this.Parameter.Amount * (this.Parameter.TradeRate - this.Parameter.Rate) / 1000,
+                DrawFee = this.Parameter.DrawFee,
+                UserDrawFee = this.Parameter.UserDrawFee,
+                DrawFeePoundage = this.Parameter.UserDrawFee - this.Parameter.DrawFee
             };
             this.Result.Data = tradeRep.Insert(trade);
         }

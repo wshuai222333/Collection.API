@@ -14,7 +14,7 @@ namespace Collection.Api.Service.User {
         /// 执行方法
         /// </summary>
         protected override void ExecuteMethod() {
-            this.Result.Data = userAccountRep.UpdateIsQrcode(this.Parameter.UserAccountId, this.Parameter.IsQrcode);
+            this.Result.Data = userAccountRep.UpdateIsQrcode(this.Parameter.UserAccountId, this.Parameter.IsQrcode,this.Parameter.Rate,this.Parameter.DrawFee);
         }
     }
 }

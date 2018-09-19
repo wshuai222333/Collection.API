@@ -18,16 +18,16 @@ namespace Collection.PetaPoco.Repositories.Collection {
             string sql = string.Format("SET Memberlevel={0} WHERE 1=1 {1}", Memberlevel, wherestr);
             return CollectionDB.GetInstance().Update<UserAccount>(sql);
         }
-        public int UpdateIsQrcode(int UserAccountId, int IsQrcode) {
+        public int UpdateIsQrcode(int UserAccountId, int IsQrcode,decimal Rate,decimal DrawFee) {
             string wherestr = string.Empty;
             wherestr = " AND UserAccountId=" + UserAccountId;
-            string sql = string.Format("SET IsQrcode={0} WHERE 1=1 {1}", IsQrcode, wherestr);
+            string sql = string.Format("SET IsQrcode={0},Rate={2},DrawFee = {3} WHERE 1=1 {1}", IsQrcode, wherestr, Rate, DrawFee);
             return CollectionDB.GetInstance().Update<UserAccount>(sql);
         }
-        public int UpdateRate(int UserAccountId, decimal Rate) {
+        public int UpdateRate(int UserAccountId, decimal Rate,decimal UserDrawFee) {
             string wherestr = string.Empty;
             wherestr = " AND UserAccountId=" + UserAccountId;
-            string sql = string.Format("SET UserRate={0} WHERE 1=1 {1}", Rate, wherestr);
+            string sql = string.Format("SET UserRate={0},UserDrawFee = {2} WHERE 1=1 {1}", Rate, wherestr, UserDrawFee);
             return CollectionDB.GetInstance().Update<UserAccount>(sql);
         }
         public UserAccount GetUserAccount(UserAccount model) {

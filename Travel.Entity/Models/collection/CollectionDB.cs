@@ -288,6 +288,20 @@ namespace Collection.Entity.CollectionModel
 		[Column] public decimal? Rate {get;set;}
 		[Column] public decimal? UserRate {get;set;}
 		[Column] public int? IsQrcode {get;set;}
+		[Column] public decimal? DrawFee {get;set;}
+		[Column] public decimal? UserDrawFee {get;set;}
+		
+	 }
+	
+	 [TableName("dbo.Admin")]
+	 [ExplicitColumns]
+     public partial class Admin:CollectionDB.Record<Admin>
+	 {
+		
+		[Column] public int AdminId {get;set;}
+		[Column] public string UserName {get;set;}
+		[Column] public string UserPwd {get;set;}
+		[Column] public DateTime? CreateTime {get;set;}
 		
 	 }
 	
@@ -319,18 +333,9 @@ namespace Collection.Entity.CollectionModel
 		[Column] public decimal? Rate {get;set;}
 		[Column] public decimal? Poundage {get;set;}
 		[Column] public DateTime? TradeTime {get;set;}
-		
-	 }
-	
-	 [TableName("dbo.Admin")]
-	 [ExplicitColumns]
-     public partial class Admin:CollectionDB.Record<Admin>
-	 {
-		
-		[Column] public int AdminId {get;set;}
-		[Column] public string UserName {get;set;}
-		[Column] public string UserPwd {get;set;}
-		[Column] public DateTime? CreateTime {get;set;}
+		[Column] public decimal? DrawFee {get;set;}
+		[Column] public decimal? UserDrawFee {get;set;}
+		[Column] public decimal? DrawFeePoundage {get;set;}
 		
 	 }
 

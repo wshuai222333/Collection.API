@@ -7,5 +7,7 @@ namespace Collection.Api.DTO.User {
         public int UserAccountId { get; set; }
 
         public decimal UserRate { get; set; }
+
+        public decimal UserDrawFee { get; set; }
     }
 }

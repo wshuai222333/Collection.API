@@ -1,5 +1,5 @@
 ﻿namespace Collection.Api.DTO.Trade {
-    public class RequestAddTrade: RequestOriBaseModel {
+    public class RequestAddTrade : RequestOriBaseModel {
         public string TradeOrderId { get; set; }
 
         public decimal Amount { get; set; }
@@ -28,7 +28,8 @@
 
         public decimal Rate { get; set; }
 
+        public decimal DrawFee { get; set; }
 
-
+        public decimal UserDrawFee { get; set; } 
     }
 }
