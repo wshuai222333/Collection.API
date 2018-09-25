@@ -14,7 +14,11 @@ namespace Collection.Api.Service.Agents {
         /// 执行方法
         /// </summary>
         protected override void ExecuteMethod() {
-            this.Result.Data = agentTradeRep.GetAgentTradeLists(this.Parameter.AgentTradeId, 1, this.Parameter.TradeOrderId, this.Parameter.BeginTime, this.Parameter.EndTime).Sum(i=>i.Profits);
+          var list = agentTradeRep.GetAgentTradeLists(this.Parameter.AgentTradeId, 1, this.Parameter.TradeOrderId, this.Parameter.BeginTime, this.Parameter.EndTime);
+            this.Result.Data = new {
+                TotalAmount = list.Sum(i=>i.Amount),
+                TotalProfits = list.Sum(i=>i.Profits)
+            };
         }
     }
 }
