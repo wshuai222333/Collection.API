@@ -52,7 +52,7 @@ namespace Collection.PetaPoco.Repositories.Collection {
             return CollectionDB.GetInstance().SingleOrDefault<UserAccount>(sql,
                               model.UserName, model.UserPwd,model.UserAccountId);
         }
-        public Page<UserAccount> GetUserList(int pageindex, int pagesize,string UserName,string Phone) {
+        public Page<UserAccount> GetUserList(int pageindex, int pagesize,string UserName,string Phone,int UserAccountId) {
             string sql = string.Empty;
             string wherestr = string.Empty;
             if (!string.IsNullOrWhiteSpace(UserName)) {
@@ -61,13 +61,15 @@ namespace Collection.PetaPoco.Repositories.Collection {
             if (!string.IsNullOrWhiteSpace(Phone)) {
                 wherestr += " and Phone =@1 ";
             }
-
+            if (UserAccountId>0) {
+                wherestr += " and UserAccountId =@2 ";
+            }
             sql = string.Format(@"
 SELECT  *
 FROM    dbo.UserAccount
 WHERE 1=1 {0}
 ORDER BY CreateTime DESC", wherestr);
-            return CollectionDB.GetInstance().Page<UserAccount>(pageindex, pagesize, sql, UserName, Phone);
+            return CollectionDB.GetInstance().Page<UserAccount>(pageindex, pagesize, sql, UserName, Phone, UserAccountId);
         }
 
         public int AddIntegral(int UserAccountId,int Integral,int? Memberlevel) {

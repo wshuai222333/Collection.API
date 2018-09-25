@@ -21,8 +21,9 @@ namespace Collection.Api.Service.User {
                 Phone = this.Parameter.UserPhone,
                 UserName = this.Parameter.UserName,
                 UserPwd = this.Parameter.UserPwd,
-                Integral = 0
-            };
+                Integral = 0,
+                IsQrcode = 0
+             };
             var user = userAccountRep.GetUserAccount(useraccount);
             if (user != null) {
                 throw new AggregateException("用户名或手机号已重复！");

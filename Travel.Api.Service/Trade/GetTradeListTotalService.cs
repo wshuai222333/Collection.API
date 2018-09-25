@@ -14,7 +14,12 @@ namespace Collection.Api.Service.Trade {
         /// 执行方法
         /// </summary>
         protected override void ExecuteMethod() {
-            this.Result.Data = tradeRep.GetTradeLists(this.Parameter.UserAccountId, this.Parameter.State,this.Parameter.IsQrcode,this.Parameter.BeginTime,this.Parameter.EndTime).Sum(i=>i.Profits);
+            var list= tradeRep.GetTradeLists(this.Parameter.UserAccountId, 1,this.Parameter.IsQrcode,this.Parameter.BeginTime,this.Parameter.EndTime);
+            this.Result.Data = new {
+                TotalAmount = list.Sum(i=>i.Amount),
+                TotalProfits = list.Sum(i=>i.Profits),
+                TotalDrawFeeTotalProfits = list.Sum(i=>i.DrawFeePoundage)
+            };
         }
     }
 }

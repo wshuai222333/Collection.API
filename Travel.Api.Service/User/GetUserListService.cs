@@ -4,8 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Collection.Api.Service.User
-{
+namespace Collection.Api.Service.User {
     public class GetUserListService : ApiOriBase<RequestGetUserList> {
         #region 注入服务
         public UserAccountRep userAccountRep { get; set; }
@@ -14,8 +13,7 @@ namespace Collection.Api.Service.User
         /// 执行方法
         /// </summary>
         protected override void ExecuteMethod() {
-
-            this.Result.Data = userAccountRep.GetUserList(this.Parameter.pageindex, this.Parameter.pagesize, this.Parameter.UserName,this.Parameter.Phone);
+            this.Result.Data = userAccountRep.GetUserList(this.Parameter.pageindex, this.Parameter.pagesize, this.Parameter.UserName, this.Parameter.Phone, this.Parameter.UserAccountId ?? 0);
         }
     }
 }
