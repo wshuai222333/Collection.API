@@ -53,11 +53,11 @@ namespace Collection.Api.Service {
     public class MerchantException : ApiExceptionBase {
         private const string ErrCode = "00003";
 
-        public MerchantException() : base(ErrCode, "商户信息异常！") { }
+        public MerchantException() : base(ErrCode, "商户不存在或暂无权限！") { }
 
-        public MerchantException(string parameterName) : this(ErrCode, "商户信息异常") { }
+        public MerchantException(string parameterName) : this(ErrCode, "商户不存在或暂无权限！") { }
 
-        public MerchantException(string parameterName, string message) : base(ErrCode, string.Format("{0}.商户信息异常:{1}", parameterName, message)) { }
+        public MerchantException(string parameterName, string message) : base(ErrCode, string.Format("{0}.商户不存在或暂无权限！:{1}", parameterName, message)) { }
     }
 
     /// <summary>

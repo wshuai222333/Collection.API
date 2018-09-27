@@ -64,9 +64,13 @@ namespace Collection.Api.Service {
 
             agent = agentRep.GetAgent(agentmodel);
             
+            //验证商户是否存在
+            if (agent == null) {
+                throw new MerchantException();
+            }
             //验证sign
             if (!this.Parameter.Sign.Equals(GetMySign(agent.UserKey))) {
-                LoggerFactory.Instance.Logger_Debug(GetMySignStr(agent.UserKey)+"|"+ GetMySign(agent.UserKey)+"|"+ this.Parameter.Sign, "SignError");
+                //LoggerFactory.Instance.Logger_Debug(GetMySignStr(agent.UserKey)+"|"+ GetMySign(agent.UserKey)+"|"+ this.Parameter.Sign, "SignError");
                 throw new ApiSignException("Sign");
             }
             //验证数据 

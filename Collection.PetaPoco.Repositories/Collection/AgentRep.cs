@@ -25,7 +25,7 @@ namespace Collection.PetaPoco.Repositories.Collection {
             string sql = string.Format(@"
 SELECT  *
 FROM    [dbo].[Agent]
-WHERE   1 = 1
+WHERE   1 = 1 AND State=1
         {0} ", wherestr);
             #endregion
 
@@ -72,15 +72,28 @@ WHERE   1 = 1
         public int UpdateAgent(Agent agent) {
             #region sql
             string wherestr = string.Empty;
-            wherestr += " AgentId = " + agent.AgentId;
+            wherestr += "AND AgentId = " + agent.AgentId;
             string modifystr = string.Empty;
             string sql = string.Format(@"
-            SET MerchantName=@1,Rate = @2,Phone=@3
+            SET MerchantName=@0,Rate = @1,Phone=@2
             WHERE 1 = 1
             {0}
              ", wherestr);
             #endregion
             return CollectionDB.GetInstance().Update<Agent>(sql,agent.MerchantName,agent.Rate,agent.Phone);
+        }
+        public int UpdateAgentState(int AgentId,int State) {
+            #region sql
+            string wherestr = string.Empty;
+            wherestr += "AND AgentId = " + AgentId;
+            string modifystr = string.Empty;
+            string sql = string.Format(@"
+            SET State=@0
+            WHERE 1 = 1
+            {0}
+             ", wherestr);
+            #endregion
+            return CollectionDB.GetInstance().Update<Agent>(sql, State);
         }
     }
 }

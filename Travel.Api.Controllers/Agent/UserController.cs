@@ -18,6 +18,8 @@ namespace Collection.Api.Controllers.Agent {
 
         public AgentListService agentListService { get; set; }
 
+        public AgentModifyStateService agentModifyStateService { get; set; }
+
         [Route("AgentLogin"), HttpPost]
         public async Task<ResponseMessageModel> UserLogin(RequestAgentLogin model) {
             return await Task.Run(() => agentLoginService.Execute(model));
@@ -36,6 +38,10 @@ namespace Collection.Api.Controllers.Agent {
         [Route("AgentList"), HttpPost]
         public async Task<ResponseMessageModel> AgentList(RequestAgentList model) {
             return await Task.Run(() => agentListService.Execute(model));
+        }
+        [Route("AgentModifyState"), HttpPost]
+        public async Task<ResponseMessageModel> AgentModifyState(RequestAgentModifyState model) {
+            return await Task.Run(() => agentModifyStateService.Execute(model));
         }
     }
 }

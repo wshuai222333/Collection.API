@@ -71,7 +71,7 @@ SELECT  *
 FROM    dbo.Trade
 WHERE 1=1 {0}
 ", wherestr);
-            return CollectionDB.GetInstance().Fetch<Trade>(sql, UserAccountId, State,IsQrcode, BeginTime, EndTime?.AddDays(-1));
+            return CollectionDB.GetInstance().Fetch<Trade>(sql, UserAccountId, State,IsQrcode, BeginTime, EndTime?.AddDays(1));
         }
     }
 }

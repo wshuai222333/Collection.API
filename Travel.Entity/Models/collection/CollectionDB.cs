@@ -268,6 +268,7 @@ namespace Collection.Entity.CollectionModel
 		[Column] public string UserPwd {get;set;}
 		[Column] public string Phone {get;set;}
 		[Column] public decimal? Profits {get;set;}
+		[Column] public int? State {get;set;}
 		
 	 }
 	

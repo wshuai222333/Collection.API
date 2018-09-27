@@ -19,10 +19,11 @@ namespace Collection.Api.Service.Agents {
                 UserKey = Guid.NewGuid().ToString().Replace("-", "").ToUpper(),
                 UserName = "admin",
                 UserPwd = "123456",
-                AgentId = this.Parameter.AddAgentId
+                AgentId = this.Parameter.AddAgentId,
+                State = 1
             };
             if (this.Parameter.AddAgentId > 0) {
-                this.Result.Data = agentRep.Add(agent);
+                this.Result.Data = agentRep.UpdateAgent(agent);
             } else {
                 this.Result.Data = agentRep.Add(agent);
             }
