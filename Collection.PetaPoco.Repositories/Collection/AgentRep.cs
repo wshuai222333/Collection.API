@@ -68,7 +68,19 @@ WHERE   1 = 1 AND State=1
             #endregion
             return CollectionDB.GetInstance().Page<Agent>(pageindex, pagesize, sql);
         }
-
+        public List<Agent> GetAgentList() {
+            #region sql
+            string wherestr = string.Empty;
+            string sql = string.Format(@"
+            SELECT  *
+            FROM    dbo.Agent
+            WHERE   1 = 1
+            {0}
+            ORDER BY CreateTime DESC
+            ", wherestr);
+            #endregion
+            return CollectionDB.GetInstance().Fetch<Agent>(sql);
+        }
         public int UpdateAgent(Agent agent) {
             #region sql
             string wherestr = string.Empty;
